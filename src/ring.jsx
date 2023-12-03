@@ -17,7 +17,7 @@ const Ring = () => {
   const handleSelect = (e) => {
     console.log("clicked");
     let position = e.intersection.object.position.clone();
-    setCubes([...cubes, position]);
+    setCubes([position]);
   };
 
   return (
