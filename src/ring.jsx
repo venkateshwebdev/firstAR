@@ -1,8 +1,9 @@
 import { Interactive, useHitTest, useXR } from "@react-three/xr";
 import { useRef, useState } from "react";
 import Box from "./Box";
+import { Sol } from "./Sol";
 const Ring = () => {
-  const {isPresenting} = useXR();
+  const { isPresenting } = useXR();
   const ringRef = useRef();
   const [cubes, setCubes] = useState([]);
   useHitTest((hitMatrix, hit) => {
@@ -22,7 +23,7 @@ const Ring = () => {
 
   return (
     <>
-      {isPresenting && cubes.map((e, i) => <Box position={e} key={i} />)}
+      {isPresenting && cubes.map((e, i) => <Sol position={e} key={i} />)}
       {isPresenting && (
         <Interactive onSelect={handleSelect}>
           <mesh ref={ringRef} rotation-x={-Math.PI / 2}>
@@ -31,6 +32,7 @@ const Ring = () => {
           </mesh>
         </Interactive>
       )}
+      {!isPresenting && <Sol />}
     </>
   );
 };
