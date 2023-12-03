@@ -1,26 +1,19 @@
 import React from 'react';
 import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import Box from './Box';
+import { ARButton, XR } from '@react-three/xr';
 
-function startXRSession() {
-  if (navigator.xr) {
-    navigator.xr.requestSession('immersive-ar')
-      .then((session) => {
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
-}
 
 function MyARScene() {
   return (
     <>
-      <button onClick={startXRSession}>Start AR</button>
-      <Canvas vr={true}>
-        <mesh>
-            <boxGeometry />
-            <meshNormalMaterial />
-        </mesh>
+    <ARButton/>
+      <Canvas>
+        <XR>
+        <Box />
+        <OrbitControls />
+        </XR>
       </Canvas>
     </>
   );
